@@ -32,8 +32,7 @@ class EntityFormatter extends HTMLFormatter {
   format = () => {
     const startTag = "<strong>";
     const endTag = "</strong>";
-    let val =  this.append(startTag, endTag);
-    return val;
+    return this.append(startTag, endTag);
   }
 }
 
@@ -176,22 +175,21 @@ const extracts = [
   }
 ];
 
-//Inititalizing string parser with above output data from module 1 and module 2
-let parser = new StringParser(feed, extracts);
-let parsedString = parser.parse();
-console.log(parsedString);
-
 
 /**
  * Function to test the output.
  * Renders the html if the output and mock data are matched.
  */
 const test = () => {
+  //Inititalizing string parser with above output data from module 1 and module 2
+  let parser = new StringParser(feed, extracts);
+  let parsedString = parser.parse();
+  console.log(parsedString);
   let expectedOutput = '<strong>Obama</strong> visited <strong>Facebook</strong>' + 
      ' headquarters: <a href="http://bit.ly/xyz">http://bit.ly/xyz </a> @' + 
      ' <a href="http://twitter.com/elversatile">elversatile</a>'
   if(expectedOutput === parsedString) {
-   document.write(parsedString);
+    document.write(parsedString);
   }
 }
 
