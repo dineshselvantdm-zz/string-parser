@@ -158,27 +158,27 @@ class StringParser {
 const test = () => {
   const feed = "Obama visited Facebook headquarters: http://bit.ly/xyz @elversatile";
   const extracts = [
-  {
-    start : 14,
-    end: 22,
-    type: "Entity"
-  },
-  {
-    start : 0,
-    end: 5,
-    type: "Entity"
-  },
-  {
-    start : 55,
-    end: 67,
-    type: "Twitter username"
-  },
-  {
-    start : 37,
-    end: 54,
-    type: "Link"
-  }
-];
+    {
+      start : 14,
+      end: 22,
+      type: "Entity"
+    },
+    {
+      start : 0,
+      end: 5,
+      type: "Entity"
+    },
+    {
+      start : 55,
+      end: 67,
+      type: "Twitter username"
+    },
+    {
+      start : 37,
+      end: 54,
+      type: "Link"
+    }
+  ];
   //Inititalizing string parser with above output data from module 1 and module 2
   let parser = new StringParser(feed, extracts);
   let parsedString = parser.parse();
