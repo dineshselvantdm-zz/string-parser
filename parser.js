@@ -151,8 +151,13 @@ class StringParser {
 }
 
 
-const feed = "Obama visited Facebook headquarters: http://bit.ly/xyz @elversatile";
-const extracts = [
+/**
+ * Function to test the output.
+ * Renders the html if the output and mock data are matched.
+ */
+const test = () => {
+  const feed = "Obama visited Facebook headquarters: http://bit.ly/xyz @elversatile";
+  const extracts = [
   {
     start : 14,
     end: 22,
@@ -174,13 +179,6 @@ const extracts = [
     type: "Link"
   }
 ];
-
-
-/**
- * Function to test the output.
- * Renders the html if the output and mock data are matched.
- */
-const test = () => {
   //Inititalizing string parser with above output data from module 1 and module 2
   let parser = new StringParser(feed, extracts);
   let parsedString = parser.parse();
