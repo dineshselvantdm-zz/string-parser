@@ -187,7 +187,9 @@ console.log(parsedString);
  * Renders the html if the output and mock data are matched.
  */
 const test = () => {
-  let expectedOutput = '<strong>Obama</strong> visited <strong>Facebook</strong> headquarters: <a href="http://bit.ly/xyz">http://bit.ly/xyz </a> @ <a href="http://twitter.com/elversatile">elversatile</a>'
+  let expectedOutput = '<strong>Obama</strong> visited <strong>Facebook</strong>' + 
+     ' headquarters: <a href="http://bit.ly/xyz">http://bit.ly/xyz </a> @' + 
+     ' <a href="http://twitter.com/elversatile">elversatile</a>'
   if(expectedOutput === parsedString) {
    document.write(parsedString);
   }
