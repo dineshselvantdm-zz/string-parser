@@ -2,7 +2,7 @@
  * A class for initializing feed inputs.
  */
 class FeedData {
-  constructor(feed="", extracts=[]) {
+  constructor(feed='', extracts=[]) {
     this.feed = feed;
     this.extracts = extracts;
   }  
@@ -30,8 +30,8 @@ class EntityFormatter extends HTMLFormatter {
   }
   
   format = () => {
-    const startTag = "<strong>";
-    const endTag = "</strong>";
+    const startTag = '<strong>';
+    const endTag = '</strong>';
     return this.append(startTag, endTag);
   }
 }
@@ -46,7 +46,7 @@ class LinkFormatter extends HTMLFormatter {
   
   format = () => {
     const startTag = `<a href="${this.value}">`;
-    const endTag = " </a>";
+    const endTag = ' </a>';
     return this.append(startTag, endTag);
   }
 }
@@ -63,7 +63,7 @@ class UserNameFormatter extends HTMLFormatter {
   
   format = () => {
     const startTag = `${this.firstChar} <a href="http://twitter.com/${this.value}">`;
-    const endTag = "</a>";
+    const endTag = '</a>';
     return this.append(startTag, endTag);
   }
 }
@@ -145,7 +145,7 @@ class StringParser {
     }, formattedBuffer);
     
     formattedBuffer.push(feed.slice(endTillnow));
-    return formattedBuffer.join("");
+    return formattedBuffer.join('');
   }
   
 }
