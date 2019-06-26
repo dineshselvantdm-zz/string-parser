@@ -1,11 +1,27 @@
 /**
+ * A class for creating start and end HTML tags.
+ */
+class createTags {
+  createAnchorTags = (href) => {
+    const startTag = `<a href="${href}">`;
+    const endTag = `</a>`;
+    return { startTag, endTag };
+  }
+  createStrongTags = () => {
+    const startTag = '<strong>';
+    const endTag = '</strong>';
+    return { startTag, endTag };
+  }
+}
+
+/**
  * A class for initializing feed inputs.
  */
 class FeedData {
   constructor(feed='', extracts=[]) {
     this.feed = feed;
     this.extracts = extracts;
-  }  
+  }
 }
 
 /**
@@ -17,7 +33,7 @@ class HTMLFormatter {
     this.value = value;
   }
   append = (startTag, endTag) => {
-    return startTag + this.value + endTag;
+    return `${startTag}${this.value}${endTag}`;
   }
 }
 
@@ -30,8 +46,7 @@ class EntityFormatter extends HTMLFormatter {
   }
   
   format = () => {
-    const startTag = '<strong>';
-    const endTag = '</strong>';
+    const {startTag, endTag} = new createTags().createStrongTags();
     return this.append(startTag, endTag);
   }
 }
@@ -45,8 +60,7 @@ class LinkFormatter extends HTMLFormatter {
   }
   
   format = () => {
-    const startTag = `<a href="${this.value}">`;
-    const endTag = ' </a>';
+    const {startTag, endTag} = new createTags().createAnchorTags(this.value);
     return this.append(startTag, endTag);
   }
 }
@@ -62,8 +76,9 @@ class UserNameFormatter extends HTMLFormatter {
   }
   
   format = () => {
-    const startTag = `${this.firstChar} <a href="http://twitter.com/${this.value}">`;
-    const endTag = '</a>';
+    const val = `http://twitter.com/${this.value}`;
+    let {startTag, endTag} = new createTags().createAnchorTags(val);
+    startTag = `${this.firstChar} ${startTag}`;
     return this.append(startTag, endTag);
   }
 }
@@ -184,7 +199,7 @@ const test = () => {
   let parsedString = parser.parse();
   console.log(parsedString);
   let expectedOutput = '<strong>Obama</strong> visited <strong>Facebook</strong>' + 
-     ' headquarters: <a href="http://bit.ly/xyz">http://bit.ly/xyz </a> @' + 
+     ' headquarters: <a href="http://bit.ly/xyz">http://bit.ly/xyz</a> @' + 
      ' <a href="http://twitter.com/elversatile">elversatile</a>'
   if(expectedOutput === parsedString) {
     document.write(parsedString);
